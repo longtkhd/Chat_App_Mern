@@ -17,9 +17,18 @@ io.on('connection',  (socket) => {
   console.log('we have the connection')
   
   socket.on('disconnect',  () => { 
-    console.log('User had left !!')
+    // console.log('User had left !!')
+    io.emit('news','A user has left')
 
   }); // listen to the event
+
+
+  socket.emit('news', 'welcome');
+  socket.broadcast.emit('newuser', 'new user has joined!') // for every one 
+
+
+
+  
 });
 
 
